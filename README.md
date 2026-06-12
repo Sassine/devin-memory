@@ -4,6 +4,10 @@
   <img src="https://raw.githubusercontent.com/Sassine/devin-memory/main/banner.png" alt="devin-memory — Memory + context for Devin CLI" />
 </p>
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/devin-memory"><img src="https://img.shields.io/npm/v/devin-memory.svg?logo=npm&logoColor=fff&style=flat&labelColor=2C2C2C&color=28CF8D" alt="npm version" /></a>
+</p>
+
 Never lose a Devin CLI session again. **devin-memory** watches your context usage,
 warns you *before* the window fills up, and lets you save and resume your session —
 so `/clear` stops meaning "start over".
