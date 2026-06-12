@@ -64,6 +64,13 @@ function findFiles(dir, pred, acc) {
   return acc;
 }
 
+// Where the engine's user config dir lands inside a sandboxed fake home.
+function fakeConfigDir(home) {
+  return process.platform === 'win32'
+    ? path.join(home, 'AppData', 'Roaming', 'devin')
+    : path.join(home, '.config', 'devin');
+}
+
 // Minimal, locale-free child environment with a sandboxed home.
 function makeEnv(home, extra) {
   var env = {};
@@ -212,7 +219,7 @@ var junk = path.join(TMP, 'junkdir');
 mkdirp(path.join(projA, '.git')); // "looks like a project"
 mkdirp(path.join(projB, '.git'));
 var envB = makeEnv(homeB);
-var cfgDirB = path.join(homeB, 'AppData', 'Roaming', 'devin');
+var cfgDirB = fakeConfigDir(homeB);
 var hookB = path.join(cfgDirB, 'hooks', 'context-monitor.js');
 
 r = runNode(INSTALL, [projA, '--scope', 'user'], { env: envB });
@@ -343,7 +350,7 @@ check('25', 'cli.js uninstall: engine removed, snapshots preserved',
 
 // 24. cli.js setup --scope user
 r = runNode(CLI, ['setup', '--scope', 'user'], { cwd: projF, env: envD });
-var cfgDirD = path.join(homeD, 'AppData', 'Roaming', 'devin');
+var cfgDirD = fakeConfigDir(homeD);
 var userCfgD = readJson(path.join(cfgDirD, 'config.json'));
 var cmdD = '';
 try { cmdD = userCfgD.hooks.UserPromptSubmit[0].hooks[0].command; } catch (e) { /* checked below */ }

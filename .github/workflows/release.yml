@@ -1,0 +1,59 @@
+name: Release
+
+# Publishes to npm and creates a GitHub release whenever a v* tag is pushed.
+#
+# npm auth uses Trusted Publishing (OIDC) — one-time setup on npmjs.com:
+#   package devin-memory → Settings → Trusted Publisher → GitHub Actions
+#   repository: Sassine/devin-memory, workflow: release.yml
+# No NPM_TOKEN secret needed after that; works alongside 2FA.
+#
+# Flow: bump "version" in package.json → commit → git tag vX.Y.Z → git push --tags
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write   # create the GitHub release
+  id-token: write   # npm trusted publishing (OIDC)
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: Run smoke suite
+        run: node tests/smoke.js
+
+      - name: Ensure OIDC-capable npm
+        run: npm install -g npm@latest
+
+      - name: Skip if this version is already on npm
+        id: check
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          if npm view "devin-memory@$VERSION" version >/dev/null 2>&1; then
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "devin-memory@$VERSION already on npm — skipping publish"
+          else
+            echo "published=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish to npm
+        if: steps.check.outputs.published == 'false'
+        run: npm publish
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 || \
+            gh release create "$GITHUB_REF_NAME" --generate-notes \
+              --title "devin-memory ${GITHUB_REF_NAME}"
