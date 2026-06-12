@@ -1,0 +1,11 @@
+{
+  "name": "devin-memory",
+  "version": "1.0.0",
+  "description": "Persistent memory for Devin CLI — never lose context after /clear. Unofficial, not affiliated with Cognition AI.",
+  "bin": { "devin-memory": "scripts/cli.js" },
+  "files": ["scripts/", "package/", "README.md", "README.pt-BR.md", "README.es.md", "LICENSE"],
+  "engines": { "node": ">=12" },
+  "license": "MIT",
+  "keywords": ["devin", "devin-cli", "devin-for-terminal", "cognition", "ai-agent", "coding-agent", "hooks", "context-management", "memory", "agents-md", "claude-code", "cli"],
+  "repository": { "type": "git", "url": "git+https://github.com/Sassine/devin-memory.git" }
+}

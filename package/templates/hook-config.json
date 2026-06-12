@@ -1,0 +1,12 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          { "type": "command", "command": "{{HOOK_COMMAND}}" }
+        ]
+      }
+    ]
+  }
+}

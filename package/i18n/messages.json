@@ -1,0 +1,27 @@
+{
+  "hook.alert.systemMessage": {
+    "en": "[memory] Estimated context at ~{pct}% ({chars} chars accumulated). Run /memory-save (or say 'save memory') before the context fills up.",
+    "pt-BR": "[memoria] Contexto estimado em ~{pct}% ({chars} chars acumulados). Rode /memory-save (ou diga 'salva memoria') antes do contexto encher.",
+    "es": "[memoria] Contexto estimado en ~{pct}% ({chars} chars acumulados). Ejecuta /memory-save (o di 'guardar memoria') antes de que el contexto se llene."
+  },
+  "install.done": {
+    "en": "devin-memory installed (scope: {scope}, memory: {memory}). Test with /hooks and /memory-save.",
+    "pt-BR": "devin-memory instalado (escopo: {scope}, memoria: {memory}). Teste com /hooks e /memory-save.",
+    "es": "devin-memory instalado (alcance: {scope}, memoria: {memory}). Prueba con /hooks y /memory-save."
+  },
+  "install.next": {
+    "en": "Next steps: open Devin CLI in the project, run /hooks to confirm the hook, then try /memory-save.",
+    "pt-BR": "Proximos passos: abra o Devin CLI no projeto, rode /hooks para confirmar o hook e depois teste /memory-save.",
+    "es": "Proximos pasos: abre el Devin CLI en el proyecto, ejecuta /hooks para confirmar el hook y luego prueba /memory-save."
+  },
+  "uninstall.done": {
+    "en": "devin-memory removed. Snapshots preserved (use --purge to delete them).",
+    "pt-BR": "devin-memory removido. Snapshots preservados (use --purge para apagar).",
+    "es": "devin-memory eliminado. Snapshots conservados (usa --purge para borrarlos)."
+  },
+  "uninstall.purged": {
+    "en": "devin-memory removed, including the entire memory folder (purge).",
+    "pt-BR": "devin-memory removido, incluindo a pasta de memoria inteira (purge).",
+    "es": "devin-memory eliminado, incluida la carpeta de memoria completa (purge)."
+  }
+}

@@ -1,0 +1,3 @@
+# devin-memory runtime files (machine-local, never commit)
+.session-state.json
+.session-log.jsonl

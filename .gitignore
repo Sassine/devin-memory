@@ -1,0 +1,14 @@
+# build artifacts
+*.zip
+*.tgz
+dist/
+
+# local agent settings
+.claude/
+
+# installer backups
+*.bak.*
+
+# OS noise
+.DS_Store
+Thumbs.db
