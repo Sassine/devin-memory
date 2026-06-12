@@ -4,6 +4,10 @@
   <img src="https://raw.githubusercontent.com/Sassine/devin-memory/main/banner.png" alt="devin-memory — Memoria + contexto para el Devin CLI" />
 </p>
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/devin-memory"><img src="https://img.shields.io/npm/v/devin-memory.svg?logo=npm&logoColor=fff&style=flat&labelColor=2C2C2C&color=28CF8D" alt="versión npm" /></a>
+</p>
+
 No vuelvas a perder una sesión del Devin CLI. **devin-memory** monitorea el uso de tu
 contexto, te avisa *antes* de que la ventana se llene y te permite guardar y retomar la
 sesión — para que `/clear` deje de significar "empezar de cero".
